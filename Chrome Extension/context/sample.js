@@ -3,7 +3,14 @@
 // found in the LICENSE file.
 
 // A generic onclick callback function.
-function genericOnClick(info, tab) {
+
+chrome.browserAction.onClicked.addListener(function(tab) {
+  chrome.tabs.executeScript({
+    code: ''
+  });
+});
+
+/*function genericOnClick(info, tab) {
   console.log("item " + info.menuItemId + " was clicked");
   console.log("info: " + JSON.stringify(info));
   console.log("tab: " + JSON.stringify(tab));
@@ -25,6 +32,7 @@ for (var i = 0; i < contexts.length; i++) {
 var parent = chrome.contextMenus.create({"title": "Test parent item"});
 var child1 = chrome.contextMenus.create(
   {"title": "Child 1", "parentId": parent, "onclick": genericOnClick});
+
 var child2 = chrome.contextMenus.create(
   {"title": "Child 2", "parentId": parent, "onclick": genericOnClick});
 console.log("parent:" + parent + " child1:" + child1 + " child2:" + child2);
@@ -67,3 +75,4 @@ chrome.contextMenus.create({"title": "Oops", "parentId":999}, function() {
     console.log("Got expected error: " + chrome.extension.lastError.message);
   }
 });
+*/
