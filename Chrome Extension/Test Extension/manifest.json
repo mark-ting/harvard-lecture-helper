@@ -8,7 +8,10 @@
                     "history",
                     "debugger",
                     "<all_urls>",
-                    "https://secure.flickr.com/"],
+                    "contextMenus"],
+    "background": {
+        "scripts": ["js/player.js"]
+    },
     "content_security_policy": "script-src 'self' chrome-extension-resource: 'unsafe-eval'; default-src 'self'",
     "manifest_version": 2,
     "browser_action": {
