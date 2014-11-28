@@ -14,4 +14,8 @@ $(document).ready(function () {
         maxHeight: 800,
         focus: true
     });
+
+    var button = Dropbox.createSaveButton('summernote', document.getElementById('summernote'));
+    document.getElementById("container").appendChild(button);
+
 });
