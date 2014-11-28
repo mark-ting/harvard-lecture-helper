@@ -1,5 +1,10 @@
 /*global $, jQuery, alert*/
 
+$.getScript("checkCS502x.js", function () {
+    "use strict";
+    alert("Script loaded and executed.");
+});
+
 $(document).ready(function () {
     "use strict";
     $('#summernote').summernote({

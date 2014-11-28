@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Harvard Note Helper",
-    "version": "1",
+    "version": "0.1.1",
 
     "description": "An extension to help with videos and note taking! To be used in conjunction with CS50 2x",
     /*
