@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <!-- include Dropbox dropins API -->
-    <script type="text/javascript" src="js/dropins.js" id="dropboxjs" data-app-key="4mosdp4h1dsfjow"></script>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="4mosdp4h1dsfjow"></script>
 
     <!-- include jQuery and Bootstrap JS and CSS -->
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -18,20 +18,8 @@
     <body>
         <div id="summernote">Welcome to Harvard Note Helper!<br>Powered by Summernote</div>
 
-        <div id="loadedcontent"></div>
-
-        <div container>
-            <a href= class="dropbox-saver"></a>
-        </div>
-
-        <div load>
-            <form enctype="multipart/form-data">
-                <input name="file" type="file"/>
-                <input type="button" value="load"/>
-            </form>
-        </div>
+        <div id="container"></div>
 
         <script src="js/popup.js"></script>
-        <progress></progress>
     </body>
 </html>

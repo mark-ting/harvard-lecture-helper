@@ -31,5 +31,9 @@
         "cookies",
         "storage",
         "webNavigation"
+    ],
+
+    "web_accessible_resources": [
+        "popup.html"
     ]
 }
