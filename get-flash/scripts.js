@@ -39,46 +39,63 @@ walkTheObject(this); // start with the global object
 console.log("Entering scripts.js");
 var objs = []; // we'll store the object references in this array
 
-function walkTheObject(obj) {
+if (document.URL.indexOf("youtube.com") > -1) {
+    //window.location = document.URL + "&enablejsapi=1";
+    var videoElements = document.getElementsByTagName('video');
+    /* var id = document.URL.substring(document.URL.indexOf("v=") + 2);
+    id = id.substring(0, id.indexOf("&"));
+    console.log(id);
+    var player = document.getElementById(id); */
     try {
-        //console.log("Recursing...");
-        var keys = Object.keys(obj); // get all own property names of the object
-
-        keys.forEach(function (key) {
-            var value = obj[key]; // get property value
-
-            // if the property value is an object...
-            if (value && typeof value === 'object') {
-
-                // if we don't have this reference...
-                if (objs.indexOf(value) < 0) {
-                    objs.push(value); // store the reference
-
-                    walkTheObject(value); // traverse all its own properties
-                }
-
+        if (videoElements !== null) {
+            for (var i = 0; i < videoElements.length; i++) {
+                console.log(videoElements[i]);
+                videoElements[i].pause();
+                var time = Math.floor(Number(videoElements[i].currentTime));
+                window.location = document.URL + "&t=" + time;
             }
-        });
-    } catch (err) {console.log("ERROR: " + err); }
-}
-
-walkTheObject(document); // start with the global object
-
-console.log("Trying to find flash files...");
-
-var flash = null;
-objs.forEach(function (obj) {
-    try {
-        var type = obj.type;
-        if (type === "application/x-shockwave-flash") {
-            console.log("Found flash file: " + obj);
-            console.log("Id = " + obj.id);
-            flash = obj;
         }
-    } catch (err) {console.log("ERROR: " + err); }
-});
+    } catch (err) {console.log("ERROR: " + err);}
+}
+else {
+    function walkTheObject(obj) {
+        try {
+            //console.log("Recursing...");
+            var keys = Object.keys(obj); // get all own property names of the object
 
-    
+            keys.forEach(function (key) {
+                var value = obj[key]; // get property value
+
+                // if the property value is an object...
+                if (value && typeof value === 'object') {
+
+                    // if we don't have this reference...
+                    if (objs.indexOf(value) < 0) {
+                        objs.push(value); // store the reference
+
+                        walkTheObject(value); // traverse all its own properties
+                    }
+
+                }
+            });
+        } catch (err) {console.log("ERROR: " + err); }
+    }
+
+    walkTheObject(document); // start with the global object
+
+    console.log("Trying to find flash files...");
+
+    var flash = null;
+    objs.forEach(function (obj) {
+        try {
+            if (obj.type === "application/x-shockwave-flash") {
+                console.log("Found flash file: " + obj);
+                console.log("Id = " + obj.id);
+                flash = obj;
+            }
+        } catch (err) {console.log("ERROR: " + err); }
+    });
+}
     /*,                    function(results) {
              chrome.tabs.executeScript(undefined, {allFrames: true, file:'js/findurl.js'});
         } );
