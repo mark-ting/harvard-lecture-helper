@@ -1,30 +1,16 @@
 /*global $, jQuery, alert*/
-
+/*
 $.getScript("checkCS502x.js", function () {
     "use strict";
     alert("Script loaded and executed.");
 });
-
+*/
 $(document).ready(function () {
     "use strict";
 
-    //checkFileAPI();
-
-    $('#loadedcontent').load("test.html");
-
-    $('#summernote').summernote({
-        height: 300,
-        width: 500,
-        minHeight: 200,
-        maxHeight: 800,
-        focus: true
+    $('#notepad').click(function () {
+        chrome.tabs.create({url: "notepad.html"});
     });
-
-    var button = Dropbox.createSaveButton(chrome.extension.getURL('popup.html'), 'summernote.html');
-    document.getElementById('container').appendChild(button);
-
-    //document.getElementById('file').addEventListener('change', loadFile, false);
-
 });
 
 // Check for the various File API support.
@@ -37,6 +23,7 @@ function checkFileAPI() {
     }
 }
 
+/*
 function loadFile(evt) {
     var f = evt.target.files[0];
 
@@ -56,3 +43,4 @@ function loadFile(evt) {
         alert("Failed to load file");
     }
 }
+*/
