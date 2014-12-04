@@ -37,6 +37,7 @@ walkTheObject(this); // start with the global object
         // From https://stackoverflow.com/questions/8409577/get-all-the-objects-dom-or-otherwise-using-javascript
 
 console.log("Entering scripts.js");
+
 var objs = []; // we'll store the object references in this array
 
 if (document.URL.indexOf("youtube.com") > -1) {
@@ -57,7 +58,6 @@ if (document.URL.indexOf("youtube.com") > -1) {
                 // url to resume playing at current time
                 var url = document.URL + "&t=" + time;
                 console.log(url);
-                videoElements[i].currentTime = time + 100;
             }
         }
     } catch (err) {console.log("ERROR: " + err);}
