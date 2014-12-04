@@ -13,9 +13,10 @@ $(document).ready(function () {
     $('#export').click(function () {
         downloadInnerHtml(fileName, 'summernote', 'text/html');
     });
-
+    /*
     var button = Dropbox.createSaveButton(chrome.extension.getURL('notepad.html'), 'note.html');
     document.getElementById('save').appendChild(button);
+    */
 });
 
 function downloadInnerHtml(filename, elId, mimeType) {
