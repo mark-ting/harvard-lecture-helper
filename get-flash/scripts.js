@@ -50,9 +50,12 @@ if (document.URL.indexOf("youtube.com") > -1) {
         if (videoElements !== null) {
             for (var i = 0; i < videoElements.length; i++) {
                 console.log(videoElements[i]);
+                // pause video
                 videoElements[i].pause();
+                // time of current video
                 var time = Math.floor(Number(videoElements[i].currentTime));
-                window.location = document.URL + "&t=" + time;
+                // url to resume playing at current time
+                var url = document.URL + "&t=" + time;
             }
         }
     } catch (err) {console.log("ERROR: " + err);}
