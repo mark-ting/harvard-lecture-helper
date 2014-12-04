@@ -1,10 +1,8 @@
 {
-   "background": {
-      "scripts": [ "js/background.js" ]
-   },
    "browser_action": {
       "default_title": "CS50 2x",
-      "name": "CS50 2x"
+      "name": "CS50 2x",
+      "default_popup": "background.html"
    },
    "commands": {
       "_execute_browser_action": {
@@ -18,6 +16,6 @@
    "name": "CS50 2x",
    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.3",
+   "version": "0.4",
    "web_accessible_resources": [ "css/*", "img/*", "lib/*" ]
 }
