@@ -16,10 +16,16 @@
     <head><title>Note Box</title></head>
 
     <body>
-        <div id="summernote">Welcome to Harvard Note Helper!<br>Powered by Summernote</div>
-        <div id="save">
-            <input type="button" id="export" value="Export HTML"/>
+        <div id="save-menu">
+            <input id="edit-note" type="button" value="Edit Notes">
+            <input id="save-note" type="button" value="Save Notes">
+            <input id="note-title" type="text" value="note">
+            <input id="download-note" type="button" value="Download HTML File">
+            <!-- class="btn btn-primary" -->
         </div>
+
+        <div id="summernote"></div>
+
         <script src="js/notepad.js"></script>
     </body>
 </html>

@@ -11,6 +11,12 @@
               */
 
     "content_security_policy": "script-src 'self' https://www.dropbox.com; object-src 'self'",
+    /*
+    "background": {
+        "persistent": false,
+        "scripts": ["js/background.js"]
+    },
+    */
 
     "browser_action": {
         /*
