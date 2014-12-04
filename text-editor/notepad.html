@@ -16,11 +16,16 @@
     <head><title>Note Box</title></head>
 
     <body>
-        <div id="menu">
-            <input type="button" id="notepad" value="Notepad">
-            <input type="button" id="gettime" value="Get Video Time">
+        <div id="save-menu">
+            <input id="edit-note" type="button" value="Edit Notes">
+            <input id="save-note" type="button" value="Save Notes">
+            <input id="note-title" type="text" value="note">
+            <input id="download-note" type="button" value="Download HTML File">
+            <!-- class="btn btn-primary" -->
         </div>
 
-        <script src="js/popup.js"></script>
+        <div id="summernote"></div>
+
+        <script src="js/notepad.js"></script>
     </body>
 </html>

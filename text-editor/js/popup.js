@@ -1,21 +1,19 @@
 /*global $, jQuery, alert*/
 
-$.getScript("checkCS502x.js", function () {
-    "use strict";
-    alert("Script loaded and executed.");
-});
-
 $(document).ready(function () {
     "use strict";
-    $('#summernote').summernote({
-        height: 300,
-        width: 500,
-        minHeight: 200,
-        maxHeight: 800,
-        focus: true
+
+    $('#notepad').click(function () {
+        chrome.tabs.create({url: "notepad.html"});
     });
-
-    var button = Dropbox.createSaveButton('summernote', document.getElementById('summernote'));
-    document.getElementById("container").appendChild(button);
-
 });
+
+// Check for the various File API support.
+function checkFileAPI() {
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        return;
+    } else {
+        alert('File APIs unavailable.');
+        return;
+    }
+}
