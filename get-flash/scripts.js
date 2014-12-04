@@ -56,12 +56,35 @@ if (document.URL.indexOf("youtube.com") > -1) {
                 var time = Math.floor(Number(videoElements[i].currentTime));
                 // url to resume playing at current time
                 var url = document.URL + "&t=" + time;
+                console.log(url);
+                videoElements[i].currentTime = time + 100;
             }
         }
     } catch (err) {console.log("ERROR: " + err);}
 }
-else {
-    function walkTheObject(obj) {
+else { // Assume CS50 2x has already run, so the player is Flowplayer.
+    //window.location = document.URL + "&enablejsapi=1";
+    var videoElements = document.getElementsByTagName('video');
+    /* var id = document.URL.substring(document.URL.indexOf("v=") + 2);
+    id = id.substring(0, id.indexOf("&"));
+    console.log(id);
+    var player = document.getElementById(id); */
+    try {
+        if (videoElements !== null) {
+            for (var i = 0; i < videoElements.length; i++) {
+                console.log(videoElements[i]);
+                // pause video
+                videoElements[i].pause();
+                // time of current video
+                var time = Math.floor(Number(videoElements[i].currentTime));
+                // url to resume playing at current time
+                console.log(time);
+                videoElements[i].currentTime = time + 100;
+            }
+        }
+    } catch (err) {console.log("ERROR: " + err);}
+    
+    /* function walkTheObject(obj) {
         try {
             //console.log("Recursing...");
             var keys = Object.keys(obj); // get all own property names of the object
@@ -98,6 +121,8 @@ else {
             }
         } catch (err) {console.log("ERROR: " + err); }
     });
+    console.log(flash);
+    flash.remove();*/
 }
     /*,                    function(results) {
              chrome.tabs.executeScript(undefined, {allFrames: true, file:'js/findurl.js'});
