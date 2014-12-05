@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <!-- include Dropbox dropins API -->
-    <script type="text/javascript" src="js/dropins.js" id="dropboxjs" data-app-key="4mosdp4h1dsfjow"></script>
-
     <!-- include jQuery and Bootstrap JS and CSS -->
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
 
-    <!-- include Summernote JS and CSS -->
-    <script src="js/summernote.min.js"></script>
-    <link href="css/summernote.css" rel="stylesheet">
-
-    <head><title>Note Box</title></head>
+    <head><title>Harvard Lecture Helper Menu</title></head>
 
     <body>
+        <div id="menu-title">
+            Harvard Lecture Helper
+        </div>
         <div id="menu">
-            <input type="button" id="notepad" value="Notepad">
-            <input type="button" id="gettime" value="Get Video Time">
+            <input type="button" class="menu-button" id="notepad" value="Notepad">
+            <input type="button" class="menu-button" id="gettime" value="Get Video Time">
         </div>
 
         <script src="js/popup.js"></script>
