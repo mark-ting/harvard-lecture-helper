@@ -1,16 +1,21 @@
 {
-  "name": "Page Redder",
-  "description": "Make the current page red",
-  "version": "2.0",
-  "permissions": [
-    "activeTab"
-  ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "browser_action": {
-    "default_title": "Make this page red"
-  },
-  "manifest_version": 2
+   "browser_action": {
+      "default_title": "CS50 2x",
+      "name": "CS50 2x",
+      "default_popup": "background.html"
+   },
+   "commands": {
+      "_execute_browser_action": {
+         "suggested_key": {
+            "default": "Alt+Shift+2"
+         }
+      }
+   },
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+   "manifest_version": 2,
+   "name": "CS50 2x",
+   "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.4",
+   "web_accessible_resources": [ "css/*", "img/*", "lib/*" ]
 }
