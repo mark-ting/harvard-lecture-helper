@@ -3,17 +3,19 @@
 $(document).ready(function () {
     "use strict";
 
-    edit('#summernote');
-    $("#save-note").toggle();
+    open('#summernote');
+    $('#save-note').toggle();
+    $('#load-file').toggle();
+    //toggleOptionVisibility();
 
     // listener for editing Summernote canvas
     $('#edit-note').click(function () {
-        edit('#summernote');
+        open('#summernote');
     });
 
     // listener for saving Summernote canvas
     $('#save-note').click(function () {
-        save('#summernote');
+        close('#summernote');
     });
 
     // listener for downloading saved HTML canvas
@@ -21,19 +23,74 @@ $(document).ready(function () {
         var fileName =  document.getElementById('note-title').value; // You can use the .txt extension if you want
 
         if (fileName !== null) {
-            downloadInnerHTML(fileName, 'summernote', 'text/html');
+            file_export(fileName, 'summernote', 'text/plain');
         } else {
             alert('Please provide a title for your note!');
         }
     });
+
+    $('#load-note').click(function () {
+        file_import('#summernote');
+    });
+
+    $('#summernote').focusout(function () {
+        localStorage[key] = editableContent.innerHTML;
+    });
 });
 
 
-var key = "draft";
-var editableContent = document.getElementById('summernote');
-editableContent.innerHTML = localStorage[key] || '';
+// create new instance of Summernote element within specified element
+function open(element) {
+    $(element).summernote({
+        height: 600,
+        width: 1024,
+        minHeight: 400,
+        maxHeight: 768,
+        focus: true,
+        onkeyup: function(e) {
+            save_local('#summernote', 'notepad');
+        },
+    });
 
-function downloadInnerHTML(fileName, elementID, mimeType) {
+    load_local('#summernote', 'notepad');
+    toggleOptionVisibility();
+}
+
+// close opened instance Summernote element within specified element
+function close(element) {
+    save_local(element, 'notepad');
+    $(element).html = $(element).code();
+    $(element).destroy();
+    toggleOptionVisibility();
+}
+
+// saves innerHTML within specified element to localStorage using specified sessionKey
+function save_local(element, sessionKey) {
+    var content = $(element).code();
+    localStorage[sessionKey] = content;
+}
+
+// loads innerHTML within specified element to localStorage using specified sessionKey
+function load_local(element, sessionKey) {
+    if (localStorage[sessionKey]) {
+        var content = localStorage[sessionKey];
+    } else {
+        var content = $(element).load('new_user.html');
+    }
+
+    $(element).code(content);
+}
+
+// toggles visibility of UI elements
+function toggleOptionVisibility() {
+    $("#edit-note").toggle();
+    $("#save-note").toggle();
+    $("#save-file").toggle();
+    $("#load-file").toggle();
+}
+
+// download dynamic HTML element
+function file_export(fileName, elementID, mimeType) {
     var elHtml = document.getElementById(elementID).innerHTML,
         link = document.createElement('a');
     mimeType = mimeType || 'text/plain';
@@ -43,30 +100,23 @@ function downloadInnerHTML(fileName, elementID, mimeType) {
     link.click();
 }
 
-// creates Summernote element within specified DIV
-function edit(div) {
-    $(div).summernote({
-        height: 600,
-        width: 1024,
-        minHeight: 400,
-        maxHeight: 1280,
-        focus: true
-    });
-    toggleOptionVisibility();
-}
+// loads user-provided file (text document) into specified element
+function file_import(element) {
+    var file = $('#select-file')[0].files[0];
+    var reader = new FileReader();
+    reader.onload = function () {
+        var content = reader.result;
+        var target = $(element);
 
-// saves Summernote element within specified DIV
-function save(div) {
-    var aHTML = $(div).code(); //save HTML If you need(aHTML: array).
-    $(div).destroy();
-    localStorage[key] = editableContent.innerHTML;
-    toggleOptionVisibility();
-}
+        // load into Summernote
+        $(target).code(content);
 
-// toggles button element visibility
-function toggleOptionVisibility() {
-    $("#edit-note").toggle();
-    $("#save-note").toggle();
-    $("#download-note").toggle();
-    $("#note-title").toggle();
+        // load into element
+        $(target).html(content);
+    }
+    if (file) {
+        reader.readAsText(file);
+    } else {
+        alert('Please choose a file to upload!');
+    }
 }
