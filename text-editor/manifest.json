@@ -37,7 +37,8 @@
         "contextMenus",
         "cookies",
         "storage",
-        "webNavigation"
+        "webNavigation",
+        "windows"
     ],
 
     "web_accessible_resources": [
