@@ -4,6 +4,7 @@
     "version": "0.2.0",
 
     "description": "An extension to help with videos and note taking! To be used in conjunction with CS50 2x",
+
     /*
     "icons": { "16": "img/16.png",
                "48": "img/48.png",
@@ -11,6 +12,7 @@
               */
 
     "content_security_policy": "script-src 'self' https://www.dropbox.com; object-src 'self'",
+
     /*
     "background": {
         "persistent": false,
