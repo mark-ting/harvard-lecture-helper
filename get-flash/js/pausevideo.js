@@ -46,21 +46,45 @@ if (document.URL.indexOf("youtube.com") > -1) {
     console.log(id);
     var player = document.getElementById(id); */
     try {
-        if (videoElements !== null) {
+        if (videoElements === null || videoElements.length === 0) {
+            alert("Error: Could not locate video");
+        } else {
             for (var i = 0; i < videoElements.length; i++) {
                 console.log(videoElements[i]);
                 // pause video
                 videoElements[i].pause();
                 // time of current video
                 var time = Math.floor(Number(videoElements[i].currentTime));
+                var index = document.URL.indexOf("t=");
                 // url to resume playing at current time
-                var url = document.URL + "&t=" + time;
+                if (index === -1)
+                    var url = document.URL + "&t=" + time;
+                else {
+                    var url = document.URL.substring(0, index);
+                    url = url + time + document.URL.substring(url.indexOf("&"));
+                }
                 console.log(url);
             }
         }
-    } catch (err) {console.log("ERROR: " + err);}
-}
-else { // Assume CS50 2x has already run, so the player is Flowplayer.
+    } catch (err) {console.log("ERROR: " + err); }
+} else {
+    /* var embedded = document.getElementsByTagName('embed');
+    if (embedded !== null) {
+        try {
+            for (var i = 0; i < embedded.length; i++) {
+                alert("Testing something...");
+                if (embedded[i].type === "application/x-shockwave-flash") {
+                    alert("Testing something else...");
+                    var src = embedded[i].getPlaylist()[0].file;
+                    alert(src);
+                    alert(embedded[i]);
+                    embedded[i].remove();
+                    document.write('<video class="video-stream html5-main-video" x-webkit-airplay="allow" src="' + src + '" style="width: 479px; height: 360px; left: 80.75px; top: 0px; transform: none;"></video>');
+                }
+            }
+        } catch (err) {console.log("ERROR: " + err)}
+    } */
+    // Assume CS50 2x has already run, so the player is Flowplayer.
     //window.location = document.URL + "&enablejsapi=1";
     var videoElements = document.getElementsByTagName('video');
     /* var id = document.URL.substring(document.URL.indexOf("v=") + 2);
@@ -68,19 +92,24 @@ else { // Assume CS50 2x has already run, so the player is Flowplayer.
     console.log(id);
     var player = document.getElementById(id); */
     try {
-        if (videoElements !== null) {
+        if (videoElements === null || videoElements.length === 0) {
+            alert("Error: Could not locate video to get timestamp. Perhaps you forgot to run CS50 2X?");
+        } else {
             for (var i = 0; i < videoElements.length; i++) {
-                console.log(videoElements[i]);
-                // pause video
-                videoElements[i].pause();
-                // time of current video
-                var time = Math.floor(Number(videoElements[i].currentTime));
-                // url to resume playing at current time
-                console.log(time);
+                if (!videoElements[i].paused) {
+                    console.log(videoElements[i]);
+                    // pause video
+                    videoElements[i].pause();
+                    // time of current video
+                    var time = Math.floor(Number(videoElements[i].currentTime));
+                    // url to resume playing at current time
+                    var url = document.URL + "&playbackTime=" + time + "&videoSource=" + videoElements[i].src;
+                    console.log(url);
+                }
             }
         }
     } catch (err) {console.log("ERROR: " + err);}
-    
+}
     /* function walkTheObject(obj) {
         try {
             //console.log("Recursing...");
@@ -120,7 +149,6 @@ else { // Assume CS50 2x has already run, so the player is Flowplayer.
     });
     console.log(flash);
     flash.remove();*/
-}
     /*,                    function(results) {
              chrome.tabs.executeScript(undefined, {allFrames: true, file:'js/findurl.js'});
         } );

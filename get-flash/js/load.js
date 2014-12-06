@@ -19,5 +19,10 @@ document.getElementById('cs50').addEventListener("click", function () {
 document.getElementById('gettime').addEventListener("click", function () {
     console.log("Injecting video-pausing code...");
     chrome.tabs.executeScript(undefined, {allFrames: false, file: 'js/pausevideo.js'});
-    console.log("Injected code!");
+});
+
+
+document.getElementById('resumeplayback').addEventListener("click", function () {
+    console.log("Resuming playback...");
+    chrome.tabs.executeScript(undefined, {allFrames: false, file: 'js/resumeplayback.js'});
 });
