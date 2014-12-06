@@ -46,15 +46,23 @@ if (document.URL.indexOf("youtube.com") > -1) {
     console.log(id);
     var player = document.getElementById(id); */
     try {
-        if (videoElements !== null) {
+        if (videoElements === null || videoElements.length === 0) {
+            alert("Error: Could not locate video");
+        } else {
             for (var i = 0; i < videoElements.length; i++) {
                 console.log(videoElements[i]);
                 // pause video
                 videoElements[i].pause();
                 // time of current video
                 var time = Math.floor(Number(videoElements[i].currentTime));
+                var index = document.URL.indexOf("t=");
                 // url to resume playing at current time
-                var url = document.URL + "&t=" + time;
+                if (index === -1)
+                    var url = document.URL + "&t=" + time;
+                else {
+                    var url = document.URL.substring(0, index);
+                    url = url + time + document.URL.substring(url.indexOf("&"));
+                }
                 console.log(url);
             }
         }
@@ -68,19 +76,25 @@ else { // Assume CS50 2x has already run, so the player is Flowplayer.
     console.log(id);
     var player = document.getElementById(id); */
     try {
-        if (videoElements !== null) {
+        if (videoElements === null || videoElements.length === 0) {
+            alert("Error: Could not locate video to get timestamp. Perhaps you forgot to run CS50 2X?");
+        } else {
             for (var i = 0; i < videoElements.length; i++) {
-                console.log(videoElements[i]);
-                // pause video
-                videoElements[i].pause();
-                // time of current video
-                var time = Math.floor(Number(videoElements[i].currentTime));
-                // url to resume playing at current time
-                console.log(time);
+                if (!videoElements[i].paused) {
+                    console.log(videoElements[i]);
+                    // pause video
+                    videoElements[i].pause();
+                    // time of current video
+                    var time = Math.floor(Number(videoElements[i].currentTime));
+                    // url to resume playing at current time
+                    var url = document.URL + "&playbackTime=" + time + "&videoSource=" + videoElements[i].src;
+                    console.log(url);
+                    window.open(url, '_blank');
+                }
             }
         }
     } catch (err) {console.log("ERROR: " + err);}
-    
+}
     /* function walkTheObject(obj) {
         try {
             //console.log("Recursing...");
@@ -120,7 +134,6 @@ else { // Assume CS50 2x has already run, so the player is Flowplayer.
     });
     console.log(flash);
     flash.remove();*/
-}
     /*,                    function(results) {
              chrome.tabs.executeScript(undefined, {allFrames: true, file:'js/findurl.js'});
         } );
