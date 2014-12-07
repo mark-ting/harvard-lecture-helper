@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Harvard Lecture Helper",
-    "version": "0.3.0",
+    "version": "0.7.0",
 
     "description": "An extension to help with videos and note taking. Comes with an embedded version of CS50 2x!",
 
@@ -17,7 +17,7 @@
         }
     },
 
-    "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
 
     "browser_action": {
         "name": "Harvard Lecture Helper",
@@ -33,7 +33,6 @@
     "permissions": [
         "http://*/*",
         "https://*/*",
-        "https://apis.google.com/",
         "activeTab",
         "browsingData",
         "clipboardRead",
