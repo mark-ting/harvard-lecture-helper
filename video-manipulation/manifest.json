@@ -1,0 +1,32 @@
+{
+    "browser_action": {
+        "default_title": "Harvard Lecture Helper",
+        "name": "Harvard Lecture Helper",
+        "default_popup": "background.html",
+        "default_icon": {
+            "19": "img/icon_19.png",
+            "38": "img/icon_38.png"
+        }
+    },
+    "commands": {
+      "_execute_browser_action": {
+         "suggested_key": {
+            "default": "Alt+Shift+1"
+         }
+      }
+    },
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "manifest_version": 2,
+    "name": "Harvard Lecture Helper",
+    "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "version": "0.6.4",
+    "web_accessible_resources": [ "css/*", "img/*", "lib/*" ],
+    "icons": {
+        "128": "img/icon_128.png",
+        "64": "img/icon_64.png",
+        "48": "img/icon_48.png",
+        "32": "img/icon_32.png",
+        "16": "img/icon_16.png"
+    }
+}
