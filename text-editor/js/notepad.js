@@ -7,6 +7,7 @@ $(document).ready(function (e) {
 
     // resize window and open Summernote canvas
     resizeWindow();
+    load_local('#summernote', extID);
     open('#summernote');
 
     // hide unneeded UI elements
@@ -69,12 +70,14 @@ function open(element) {
             ['help', ['help']] //no help button
         ]
     });
+    load_local('#summernote', extID);
     toggleOptionVisibility();
 }
 
 // close opened instance Summernote element within specified element
 function close(element) {
     save_local(element, extID);
+    $(element).html = $(element).code();
     $(element).destroy();
     toggleOptionVisibility();
 }
@@ -93,19 +96,17 @@ function file_export(fileName, elementID, mimeType) {
 // saves innerHTML within specified element to localStorage using specified sessionKey
 function save_local(element, sessionKey) {
     var content = $(element).code();
-    $(element).html = content;
     localStorage[sessionKey] = content;
 }
 
 // loads innerHTML within specified element to localStorage using specified sessionKey
 function load_local(element, sessionKey) {
-    var storage = localStorage[sessionKey];
-    if (storage != 'undefined' || storage !== null) {
-        var content = storage;
+    if (localStorage[sessionKey]) {
+        var content = localStorage[sessionKey];
     } else {
         var content = $(element).load('new_user.html');
     }
-    $(element).code(element);
+    $(element).code(content);
 }
 
 // loads user-provided file (text document) into specified element
