@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <!-- include jQuery and Bootstrap JS and CSS -->
+    <script src="js/platform.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,9 +30,13 @@
             <input id="select-file" class="menu-button" type="file"/>
             <input id="load-note" class="menu-button" type="button" value="Upload File"/>
         </div>
-            <!-- class="btn btn-primary" -->
 
         <div id="summernote" class="editor"></div>
+
+        <div class="g-savetodrive"
+                    data-src="notepad.html #summernote"
+                    data-filename="note.txt"
+                    data-sitename="data note">
 
         <script src="js/notepad.js"></script>
     </body>
