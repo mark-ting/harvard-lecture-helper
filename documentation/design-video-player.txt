@@ -1,3 +1,5 @@
+Adam Atanas
+
 For the video manipulation parts of the project, the code is split depending on whether or not the site is YouTube. YouTube has its own built-in timestamp mechanism (adding an &t=TIME into its URL), so the video manipulator code takes advantage of it.
 
 The video pauser (Get Video Time) works by finding a list of all video tags on the current webpage, then chooses the one that's currently playing (unless we're on YouTube, in which case it chooses the only available video).
