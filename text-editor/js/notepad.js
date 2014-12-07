@@ -118,6 +118,9 @@ function file_import(element) {
         var content = reader.result;
         var target = $(element);
 
+        // load into local storage
+        localStorage[extID] = content;
+        
         // load into Summernote
         $(target).code(content);
 
