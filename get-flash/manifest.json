@@ -16,6 +16,9 @@
     "name": "Harvard Lecture Helper",
     "permissions": [ "tabs", "http://*/*", "https://*/*" ],
     "update_url": "https://clients2.google.com/service/update2/crx",
-    "version": "0.6.2",
-    "web_accessible_resources": [ "css/*", "img/*", "lib/*" ]
+    "version": "0.6.3",
+    "web_accessible_resources": [ "css/*", "img/*", "lib/*" ],
+    "icons": {
+        "128": "img/icon.png"
+    }
 }
