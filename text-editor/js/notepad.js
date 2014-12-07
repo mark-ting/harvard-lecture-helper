@@ -101,12 +101,12 @@ function save_local(element, sessionKey) {
 
 // loads innerHTML within specified element to localStorage using specified sessionKey
 function load_local(element, sessionKey) {
-    if (localStorage[sessionKey]) {
-        var content = localStorage[sessionKey];
-    } else {
-        var content = $(element).load('new_user.html');
-    }
-    $(element).code(content);
+    $.get('../new_user.html', function(content) {
+        if (localStorage[sessionKey] != null) {
+            content = localStorage[sessionKey];
+        }
+        $(element).code(content);
+    }, 'text');
 }
 
 // loads user-provided file (text document) into specified element
