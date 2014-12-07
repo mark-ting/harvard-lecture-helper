@@ -14,7 +14,7 @@ var videoElements = document.getElementsByTagName('video');
 try {
     // no video found
     if (videoElements === null || videoElements.length === 0) {
-        alert("No videos are available for resuming on this page. Perhaps you forgot to run CS50 2X?");
+        alert("No videos are available for resuming on this page. Perhaps you forgot to run CS50 2x?");
     } else {
         var found = false;
         for (var i = 0; i < videoElements.length; i++) {

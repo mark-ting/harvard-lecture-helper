@@ -16,7 +16,7 @@ if (document.URL.indexOf("youtube.com") > -1) {
                 videoElements[i].pause();
                 // time of current video
                 var time = Math.floor(Number(videoElements[i].currentTime));
-                
+
                 var index = document.URL.indexOf("&t=");
                 // url to resume playing at current time
                 var url = document.URL;
@@ -43,7 +43,7 @@ if (document.URL.indexOf("youtube.com") > -1) {
     try {
         // couldn't find video, probably because there isn't one or the user forgot to press CS50 2X
         if (videoElements === null || videoElements.length === 0) {
-            alert("Error: Could not locate video to get timestamp. Perhaps you forgot to run CS50 2X?");
+            alert("Error: Could not locate video to get timestamp. Perhaps you forgot to run CS50 2x?");
         } else {
             var found = false;
             for (var i = 0; i < videoElements.length; i++) {
