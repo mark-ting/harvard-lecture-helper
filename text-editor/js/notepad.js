@@ -82,13 +82,13 @@ function close(element) {
     toggleOptionVisibility();
 }
 
-// download dynamic HTML element
+// download dynamic HTML element as .hlnote format
 function file_export(fileName, elementID, mimeType) {
     var elHtml = $(elementID).html(),
         link = document.createElement('a');
     mimeType = mimeType || 'text/plain';
 
-    link.setAttribute('download', fileName);
+    link.setAttribute('download', fileName + '.hlnote');
     link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
     link.click();
 }
