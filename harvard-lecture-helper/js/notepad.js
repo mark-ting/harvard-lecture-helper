@@ -55,7 +55,7 @@ function open(element) {
         minHeight: 400,
         maxHeight: 640,
         focus: true,
-        onkeyup: function(e) {
+        onkeyup: function (e) {
             save_local('#summernote', extID);
         },
         toolbar: [
@@ -101,7 +101,7 @@ function save_local(element, sessionKey) {
 
 // loads innerHTML within specified element to localStorage using specified sessionKey
 function load_local(element, sessionKey) {
-    $.get('../new_user.html', function(content) {
+    $.get('../new_user.html', function (content) {
         if (localStorage[sessionKey] != null) {
             content = localStorage[sessionKey];
         }
@@ -120,7 +120,7 @@ function file_import(element) {
 
         // load into local storage
         localStorage[extID] = content;
-        
+
         // load into Summernote
         $(target).code(content);
 
@@ -135,12 +135,27 @@ function file_import(element) {
     }
 }
 
-function resizeWindow (e) {
-    chrome.windows.getCurrent(function(window) {
+function resizeWindow() {
+    chrome.windows.getCurrent(function (window) {
         var windowSize = {
             width: 820,
             height: 670
         };
         chrome.windows.update(window.id, windowSize);
     });
+}
+
+/*global $, jQuery, alert*/
+
+function array_subdivide(string, sessionKey) {
+    var content = $(element).code();
+    localStorage[sessionKey] = JSON.stringify(content);
+    console.log("Subdividing array:");
+    console.log(localStorage[sessionKey]);
+}
+
+function array_recombine(string) {
+    var content = JSON.parse(localStorage[sessionKey]);
+    console.log("Recombining array:");
+    console.log(content);
 }

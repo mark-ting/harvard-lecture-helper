@@ -43,4 +43,9 @@ $(document).ready(function () {
     $('#option').click(function () {
         chrome.tabs.create({url: "options.html"});
     });
+
+    // listener for help page
+    $('#help').click(function () {
+        chrome.tabs.create({url: "help.html"});
+    });
 });
