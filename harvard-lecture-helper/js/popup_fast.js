@@ -36,7 +36,7 @@ $(document).ready(function () {
             chrome.tabs.create({url: "options.html"});
             break;
         case 'help':
-            chrome.tabs.create({url: "options.html"});
+            chrome.tabs.create({url: "help.html"});
             break;
         default:
         }
