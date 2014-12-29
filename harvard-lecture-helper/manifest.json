@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Harvard Lecture Helper",
-    "version": "0.7.0",
+    "version": "0.7.1",
 
     "description": "An extension to help with videos and note taking. Comes with an embedded version of CS50 2x!",
 
@@ -26,7 +26,7 @@
             "19": "img/icon_19.png",
             "38": "img/icon_38.png" },
 
-        "default_popup": "popup_fast.html"
+        "default_popup": "popup.html"
     },
 
     "options_page": "options.html",
