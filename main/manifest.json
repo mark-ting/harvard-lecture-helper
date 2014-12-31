@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Harvard Lecture Helper",
-    "version": "0.7.1",
+    "version": "0.0.1.0",
 
     "description": "An extension to help with videos and note taking. Comes with an embedded version of CS50 2x!",
 

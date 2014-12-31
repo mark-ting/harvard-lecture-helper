@@ -8,17 +8,15 @@ body {
 }
 
 #summernote {
-    border: 1px;
-    border-color: black;
-    background: none;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #attribution {
     text-align: center;
+    font-size: 10px;
 }
 
 .menu-button {
@@ -35,10 +33,13 @@ ul.menus{
 
 ul.menus li{
     background: none;
-    color: #222;
+    text-align: center;
     display: inline-block;
+    color: #222;
     padding: 10px 15px;
+    width: 110px;
     cursor: pointer;
+    -webkit-user-select: none;
 }
 
 ul.menus li:hover{
@@ -47,6 +48,7 @@ ul.menus li:hover{
 
 ul.menus li.current{
     background: lightgray;
+    font-weight: bold;
     color: #222;
 }
 

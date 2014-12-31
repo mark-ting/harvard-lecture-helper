@@ -5,15 +5,16 @@ var extID = chrome.runtime.id;
 $(document).ready(function (e) {
     "use strict";
 
-    $('ul.menus li').click(function(){
+    // initialize save/load navbar
+    $('ul.menus li').click(function (e) {
         var menuID = $(this).attr('data-menu');
 
         $('ul.menus li').removeClass('current');
         $('.menu-content').removeClass('current');
 
         $(this).addClass('current');
-        $("#"+menuID).addClass('current');
-	})
+        $("#" + menuID).addClass('current');
+	});
 
     // resize window and open Summernote canvas
     resizeWindow();
@@ -60,10 +61,10 @@ function toggleOptionVisibility() {
 // create new instance of Summernote element within specified element
 function open(element) {
     $(element).summernote({
-        height: 480,
-        width: 800,
-        minHeight: 400,
-        maxHeight: 640,
+        height: 400,
+        //width: 800,
+        minHeight: 320,
+        maxHeight: 720,
         focus: true,
         onkeyup: function (e) {
             save_local('#summernote', extID);
@@ -148,15 +149,14 @@ function file_import(element) {
 function resizeWindow() {
     chrome.windows.getCurrent(function (window) {
         var windowSize = {
-            width: 816,
-            height: 686
+            width: 800,
+            height: 600
         };
         chrome.windows.update(window.id, windowSize);
     });
 }
 
 /*global $, jQuery, alert*/
-
 function array_subdivide(string, sessionKey) {
     var content = $(element).code();
     localStorage[sessionKey] = JSON.stringify(content);

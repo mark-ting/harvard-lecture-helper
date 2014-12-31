@@ -12,17 +12,10 @@
 
     <link href="css/notepad.css" rel="stylesheet" type="text/css">
 
-    <head><title>Note Box</title></head>
+    <head><title>HLH Note Editor</title></head>
 
     <body>
-        <div id="wrapper">
-            <!--
-            <div id="save-menu" class="div-menu">
-                <input id="edit-note" class="menu-button" type="button" value="Edit Notes"/>
-                <input id="save-note" class="menu-button" type="button" value="Save Notes"/>
-            </div>
-            -->
-
+        <div id="container">
             <ul class="menus">
                 <li class="tab-link current" id="edit-note">Edit Note</li>
                 <li class="tab-link" id="save-note">Save Note</li>
@@ -31,21 +24,19 @@
             </ul>
 
             <div id="export-menu" class="menu-content">
-                <input id="note-title" class="menu-button" type="text" value placeholder="Title Your Note"/>
+                <input id="note-title" class="menu-button" type="text" value placeholder="Note Title"/>
                 <input id="download-note" class="menu-button" type="button" value="Download File"/>
             </div>
 
             <div id="import-menu" class="menu-content">
-                <input id="select-file" class="menu-button" type="file"/>
+                <input id="select-file" class="menu-button" type="file" accept=".hlnote"/>
                 <input id="load-note" class="menu-button" type="button" value="Upload File"/>
             </div>
-	</div>
-        </div>
 
-        <div id="summernote" class="editor"></div>
-        <div id="attribution">
-            <p>Powered by <a href="http://summernote.org/">Summernote</a></p>
-        </div>
+            <div id="summernote" class="editor"></div>
+
+            <div id="attribution"><p>Powered by <a href="http://summernote.org/" target="_blank">Summernote</a></p></div>
+	   </div>
 
         <script src="js/notepad.js"></script>
     </body>
