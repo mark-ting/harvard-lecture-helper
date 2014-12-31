@@ -1,0 +1,61 @@
+body {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#summernote {
+    border: 1px;
+    border-color: black;
+    background: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#attribution {
+    text-align: center;
+}
+
+.menu-button {
+    display: inline-block;
+    color: default;
+    vertical-align: bottom;
+}
+
+ul.menus{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+ul.menus li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.menus li:hover{
+    background: lightblue;
+}
+
+ul.menus li.current{
+    background: lightgray;
+    color: #222;
+}
+
+.menu-content{
+    display: none;
+    background: lightgray;
+    padding: 15px;
+}
+
+.menu-content.current{
+    display: inherit;
+}
