@@ -7,19 +7,24 @@ body {
     margin: auto;
 }
 
+#summernote {
+    border: 1px;
+    border-color: black;
+    background: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#attribution {
+    text-align: center;
+}
+
 .menu-button {
     display: inline-block;
     color: default;
     vertical-align: bottom;
-}
-
-.div-menu {
-    display: inline-block;
-    vertical-align: bottom;
-}
-
-#summernote {
-    background-color: #c6c6c6;
 }
 
 ul.menus{
@@ -41,13 +46,13 @@ ul.menus li:hover{
 }
 
 ul.menus li.current{
-    background: #ededed;
+    background: lightgray;
     color: #222;
 }
 
 .menu-content{
     display: none;
-    background: #ededed;
+    background: lightgray;
     padding: 15px;
 }
 
