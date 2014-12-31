@@ -17,3 +17,7 @@ body {
     display: inline-block;
     vertical-align: bottom;
 }
+
+#summernote {
+    background-color: #c1c1c1;
+}

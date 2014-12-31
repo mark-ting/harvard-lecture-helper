@@ -1,0 +1,21 @@
+body {
+    min-width:200px;
+}
+
+#menu-title {
+    font-size: 18px;
+    text-align: center;
+}
+
+.menu-button {
+    font-size: 16px;
+    color: #ffffff;
+    background: #A41034;
+    width: 160px;
+    display: block;
+    margin: auto;
+
+.menu-button:hover {
+    color: #120f0f;
+    background: #b6b6b6;
+}

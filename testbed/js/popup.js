@@ -9,7 +9,8 @@ $(document).ready(function () {
 
         switch (target.id) {
         case 'notepad':
-            chrome.windows.create({url: "notepad.html"});
+            chrome.windows.create({url: "notepad.html",
+                                   type: "popup"});
             break;
         case 'run-cs50-2x':
             chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {

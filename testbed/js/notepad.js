@@ -5,6 +5,16 @@ var extID = chrome.runtime.id;
 $(document).ready(function (e) {
     "use strict";
 
+    $('ul.menus li').click(function(){
+        var menuID = $(this).attr('data-menu');
+
+        $('ul.menus li').removeClass('current');
+        $('.menu-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#"+menuID).addClass('current');
+	})
+
     // resize window and open Summernote canvas
     resizeWindow();
     load_local('#summernote', extID);
@@ -43,8 +53,8 @@ $(document).ready(function (e) {
 function toggleOptionVisibility() {
     $("#edit-note").toggle();
     $("#save-note").toggle();
-    $("#save-file").toggle();
-    $("#load-file").toggle();
+    $("#export-note").toggle();
+    $("#import-note").toggle();
 }
 
 // create new instance of Summernote element within specified element
@@ -138,8 +148,8 @@ function file_import(element) {
 function resizeWindow() {
     chrome.windows.getCurrent(function (window) {
         var windowSize = {
-            width: 820,
-            height: 670
+            width: 816,
+            height: 686
         };
         chrome.windows.update(window.id, windowSize);
     });
