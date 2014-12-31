@@ -16,7 +16,12 @@ body {
 
 #attribution {
     text-align: center;
-    font-size: 10px;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.4;
+    -webkit-user-select: none;
 }
 
 .menu-button {

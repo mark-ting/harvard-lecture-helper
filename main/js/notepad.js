@@ -113,7 +113,7 @@ function save_local(element, sessionKey) {
 // loads innerHTML within specified element to localStorage using specified sessionKey
 function load_local(element, sessionKey) {
     $.get('../new_user.html', function (content) {
-        if (localStorage[sessionKey] !== null) {
+        if (localStorage[sessionKey] != null) {
             content = localStorage[sessionKey];
         }
         $(element).code(content);
@@ -154,18 +154,4 @@ function resizeWindow() {
         };
         chrome.windows.update(window.id, windowSize);
     });
-}
-
-/*global $, jQuery, alert*/
-function array_subdivide(string, sessionKey) {
-    var content = $(element).code();
-    localStorage[sessionKey] = JSON.stringify(content);
-    console.log("Subdividing array:");
-    console.log(localStorage[sessionKey]);
-}
-
-function array_recombine(string) {
-    var content = JSON.parse(localStorage[sessionKey]);
-    console.log("Recombining array:");
-    console.log(content);
 }
