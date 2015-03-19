@@ -18,7 +18,7 @@ $(document).ready(function (e) {
 
     // resize window and open Summernote canvas
     resizeWindow();
-    load_local('#summernote', extID);
+    loadLocal('#summernote', extID);
     open('#summernote');
 
     // hide unneeded UI elements
@@ -35,7 +35,7 @@ $(document).ready(function (e) {
     });
 
     $('#load-note').click(function (e) {
-        file_import('#summernote');
+        fileImport('#summernote');
     });
 
     // listener for downloading saved HTML canvas
@@ -43,7 +43,7 @@ $(document).ready(function (e) {
         var fileName =  $('#note-title').val(); // You can use the .txt extension if you want
 
         if (fileName !== null) {
-            file_export(fileName, '#summernote', 'text/plain');
+            fileExport(fileName, '#summernote', 'text/plain');
         } else {
             alert('Please provide a title for your note!');
         }
@@ -67,7 +67,7 @@ function open(element) {
         maxHeight: 720,
         focus: true,
         onkeyup: function (e) {
-            save_local('#summernote', extID);
+            saveLocal('#summernote', extID);
         },
         toolbar: [
             ['style', ['style']], // no style button
@@ -81,20 +81,20 @@ function open(element) {
             ['help', ['help']] //no help button
         ]
     });
-    load_local('#summernote', extID);
+    loadLocal('#summernote', extID);
     toggleOptionVisibility();
 }
 
 // close opened instance Summernote element within specified element
 function close(element) {
-    save_local(element, extID);
+    saveLocal(element, extID);
     $(element).html = $(element).code();
     $(element).destroy();
     toggleOptionVisibility();
 }
 
 // download dynamic HTML element as .hlnote format
-function file_export(fileName, elementID, mimeType) {
+function fileExport(fileName, elementID, mimeType) {
     var elHtml = $(elementID).html(),
         link = document.createElement('a');
     mimeType = mimeType || 'text/plain';
@@ -105,13 +105,13 @@ function file_export(fileName, elementID, mimeType) {
 }
 
 // saves innerHTML within specified element to localStorage using specified sessionKey
-function save_local(element, sessionKey) {
+function saveLocal(element, sessionKey) {
     var content = $(element).code();
     localStorage[sessionKey] = content;
 }
 
 // loads innerHTML within specified element to localStorage using specified sessionKey
-function load_local(element, sessionKey) {
+function loadLocal(element, sessionKey) {
     $.get('../new_user.html', function (content) {
         if (localStorage[sessionKey] != null) {
             content = localStorage[sessionKey];
@@ -121,7 +121,7 @@ function load_local(element, sessionKey) {
 }
 
 // loads user-provided file (text document) into specified element
-function file_import(element) {
+function fileImport(element) {
     var file = $('#select-file')[0].files[0];
     var reader = new FileReader();
 
